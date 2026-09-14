@@ -1,0 +1,1 @@
+This is a sample output from Node.js server.
