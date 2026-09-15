@@ -24,6 +24,11 @@ app.get("/api/search", (req, res) => {
   res.json({ query: req.query.q });
 });
 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
