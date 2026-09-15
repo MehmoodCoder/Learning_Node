@@ -20,6 +20,8 @@ app.get("/api/interns/:id", (req, res) => {
   res.json({ id: req.params.id, name: "Sample Intern" });
 });
 
+app.get("/api/search", (req, res) => { res.json({ query: req.query.q }); });
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
