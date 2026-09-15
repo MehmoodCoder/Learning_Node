@@ -16,6 +16,10 @@ app.get("/api/interns", (req, res) => {
   res.json({ interns: ["Ali", "Sara", "Bilal"] });
 });
 
+app.get("/api/interns/:id", (req, res) => {
+  res.json({ id: req.params.id, name: "Sample Intern" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
