@@ -29,6 +29,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
