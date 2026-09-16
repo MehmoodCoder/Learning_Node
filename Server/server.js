@@ -19,6 +19,10 @@ app.post("/api/tasks", (req, res) => {
   res.status(201).json(newTask);
 });
 
+app.put("/api/tasks/:id", (req, res) => { const task = tasks.find(t => t.id === parseInt(req.params.id)); if
+(!task) return res.status(404).json({ message: "Not found" }); task.title = req.body.title; task.done =
+req.body.done; res.json(task); });
+
 app.get("/", (req, res) => {
   res.send("Hello from Node.js server!");
 });
