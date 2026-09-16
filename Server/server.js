@@ -13,6 +13,14 @@ app.get("/api/tasks", (req, res) => {
   res.json(tasks);
 });
 
+app.get("/api/tasks/:id", (req, res) => {
+  const task = tasks.find(t => t.id === parseInt(req.params.id));
+  if (!task) {
+    return res.status(404).json({ message: "Task not found" });
+  }
+  res.json(task);
+});
+
 app.post("/api/tasks", (req, res) => {
   const newTask = { id: tasks.length + 1, title: req.body.title, done: false };
   tasks.push(newTask);
