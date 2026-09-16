@@ -9,6 +9,9 @@ let tasks = [
   { id: 2, title: "Build REST API", done: false },
 ];
 
+app.use(express.json());
+
+
 app.get("/api/tasks", (req, res) => {
   res.json(tasks);
 });
@@ -64,8 +67,6 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
-
-app.use(express.json());
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
