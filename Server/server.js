@@ -9,6 +9,8 @@ let tasks = [
   { id: 2, title: "Build REST API", done: false },
 ];
 
+app.get("/api/tasks", (req, res) => { res.json(tasks); });
+
 app.get("/", (req, res) => {
   res.send("Hello from Node.js server!");
 });
