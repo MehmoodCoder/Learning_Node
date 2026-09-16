@@ -4,6 +4,11 @@ const app = express();
 
 const PORT = 3000;
 
+let tasks = [
+  { id: 1, title: "Learn Express", done: false },
+  { id: 2, title: "Build REST API", done: false },
+];
+
 app.get("/", (req, res) => {
   res.send("Hello from Node.js server!");
 });
