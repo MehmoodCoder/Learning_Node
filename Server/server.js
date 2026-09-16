@@ -27,8 +27,10 @@ app.put("/api/tasks/:id", (req, res) => {
   res.json(task);
 });
 
-app.delete("/api/tasks/:id", (req, res) => { tasks = tasks.filter(t => t.id !== parseInt(req.params.id));
-res.status(204).send(); });
+app.delete("/api/tasks/:id", (req, res) => {
+  tasks = tasks.filter((t) => t.id !== parseInt(req.params.id));
+  res.status(204).send();
+});
 
 app.get("/", (req, res) => {
   res.send("Hello from Node.js server!");
