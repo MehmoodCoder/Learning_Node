@@ -1,23 +1,31 @@
 import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+
+dotenv.config();
 
 const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 let tasks = [
   { id: 1, title: "Learn Express", done: false },
   { id: 2, title: "Build REST API", done: false },
 ];
 
-app.use(express.json());
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB Connected Successfully"))
+  .catch((err) => console.error("MongoDB Connection Error:", err));
 
+app.use(express.json());
 
 app.get("/api/tasks", (req, res) => {
   res.json(tasks);
 });
 
 app.get("/api/tasks/:id", (req, res) => {
-  const task = tasks.find(t => t.id === parseInt(req.params.id));
+  const task = tasks.find((t) => t.id === parseInt(req.params.id));
   if (!task) {
     return res.status(404).json({ message: "Task not found" });
   }
