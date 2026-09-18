@@ -22,6 +22,28 @@ Welcome to my backend project repository! This project is a complete backend RES
 
 ---
 
+## Project Structure 
+
+**Generated:** 9/18/2026, 7:38:16 PM
+**Root Path:** `workspace\Learning_Node`
+
+```
+├── 📁 Server
+│   ├── 📁 Postman
+│   │   └── 📄 Postman_Testing
+│   ├── 📁 models
+│   │   └── 📄 TaskModel.js
+│   ├── 📄 index.js
+│   ├── 📄 output.txt
+│   ├── ⚙️ package-lock.json
+│   ├── ⚙️ package.json
+│   └── 📄 server.js
+├── ⚙️ .gitignore
+└── 📝 README.md
+```
+
+---
+
 ## 🚀 Getting Started Locally:
 1. Clone Repository
 
