@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import helmet from "helmet";
 import cors from "cors";
 import Task from "./models/TaskModel.js";
-import authRoutes from './routers/auth.js'
+import authRoutes from "./routers/auth.js";
 
 dotenv.config();
 
