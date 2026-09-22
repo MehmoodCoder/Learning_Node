@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import helmet from "helmet";
 import cors from "cors";
 import Task from "./models/TaskModel.js";
+import authRoutes from './routers/auth.js'
 
 dotenv.config();
 
@@ -21,10 +22,10 @@ app.use((req, res, next) => {
   next();
 });
 
-let tasks = [
-  { id: 1, title: "Learn Express", done: false },
-  { id: 2, title: "Build REST API", done: false },
-];
+// let tasks = [
+//   { id: 1, title: "Learn Express", done: false },
+//   { id: 2, title: "Build REST API", done: false },
+// ];
 
 mongoose
   .connect(process.env.MONGODB_URI)
@@ -103,6 +104,8 @@ app.get("/api/interns/:id", (req, res) => {
 app.get("/api/search", (req, res) => {
   res.json({ query: req.query.q });
 });
+
+app.use("/api/auth", authRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
