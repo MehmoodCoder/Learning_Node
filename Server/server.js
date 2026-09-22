@@ -9,10 +9,11 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors());
+
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
