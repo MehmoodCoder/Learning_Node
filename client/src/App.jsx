@@ -1,17 +1,22 @@
-import "./App.css";
-import TaskList from "./components/Tasks";
-import AddTask from './components/AddTask'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TaskList from "./components/TaskList";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <div className="">
-        <TaskList />
-        <br />
-        <AddTask />
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <TaskList />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
