@@ -5,6 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import Task from "./models/TaskModel.js";
 import authRoutes from "./routers/auth.js";
+import protect from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -32,7 +33,7 @@ mongoose
   .then(() => console.log("MongoDB Connected Successfully"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-app.get("/api/tasks", async (req, res, next) => {
+app.get("/api/tasks", protect, async (req, res, next) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
@@ -40,8 +41,9 @@ app.get("/api/tasks", async (req, res, next) => {
     next(err);
   }
 });
+3;
 
-app.get("/api/tasks/:id", async (req, res, next) => {
+app.get("/api/tasks/:id", protect, async (req, res, next) => {
   try {
     const task = await Task.findById(req.params.id);
     if (!task) return res.status(404).json({ message: "Not found" });
@@ -51,7 +53,7 @@ app.get("/api/tasks/:id", async (req, res, next) => {
   }
 });
 
-app.post("/api/tasks", async (req, res, next) => {
+app.post("/api/tasks", protect, async (req, res, next) => {
   try {
     if (!req.body.title) {
       return res.status(400).json({ message: "Title is required" });
@@ -63,7 +65,7 @@ app.post("/api/tasks", async (req, res, next) => {
   }
 });
 
-app.put("/api/tasks/:id", async (req, res, next) => {
+app.put("/api/tasks/:id", protect, async (req, res, next) => {
   try {
     const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -75,7 +77,7 @@ app.put("/api/tasks/:id", async (req, res, next) => {
   }
 });
 
-app.delete("/api/tasks/:id", async (req, res, next) => {
+app.delete("/api/tasks/:id", protect, async (req, res, next) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
     if (!task) return res.status(404).json({ message: "Not found" });
