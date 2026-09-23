@@ -1,7 +1,19 @@
-import axios from "axios"
+import axios from "axios";
 
 const API_URL = "http://localhost:3000/api/tasks";
 
-export const getTasks = () => axios.get(API_URL)
-export const createTask = (data) => axios.post(API_URL, data)
-export const deleteTask = (id) => axios.delete(`${API_URL}/${id}`)
+const getAuthConfig = () => {
+  const token = localStorage.getItem("token");
+  return {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};
+
+export const getTasks = () => axios.get(API_URL, getAuthConfig());
+
+export const createTask = (data) => axios.post(API_URL, data, getAuthConfig());
+
+export const deleteTask = (id) =>
+  axios.delete(`${API_URL}/${id}`, getAuthConfig());
