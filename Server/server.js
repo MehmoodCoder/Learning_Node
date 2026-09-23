@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import Task from "./models/TaskModel.js";
 import authRoutes from "./routers/auth.js";
-import protect from "./middleware/auth.js";
+import protect from "./middlewares/auth.js";
 
 dotenv.config();
 
