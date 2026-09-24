@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { login as loginApi } from "../api/authApi";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/auth/login", {
-        email,
-        password,
-      });
-      localStorage.setItem("token", res.data.token);
+      const res = await loginApi({ email, password });
+      // Context login function call karein taake state aur token save ho jaye
+      login(res.data.user, res.data.token);
       alert("Login successful!");
       navigate("/dashboard");
     } catch (err) {
