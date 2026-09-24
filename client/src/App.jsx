@@ -5,7 +5,6 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 
 export default function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
@@ -17,6 +16,5 @@ export default function App() {
           }
         />
       </Routes>
-    </BrowserRouter>
   );
 }
