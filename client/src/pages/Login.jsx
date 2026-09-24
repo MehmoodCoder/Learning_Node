@@ -13,7 +13,6 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await loginApi({ email, password });
-      // Context login function call karein taake state aur token save ho jaye
       login(res.data.user, res.data.token);
       alert("Login successful!");
       navigate("/dashboard");
