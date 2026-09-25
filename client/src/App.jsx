@@ -9,7 +9,7 @@ const ProtectedRoute = lazy(() => import("./pages/ProtectedRoute"));
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
@@ -25,6 +25,6 @@ export default function App() {
           />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+    </>
   );
 }
