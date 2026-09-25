@@ -87,6 +87,19 @@ app.delete("/api/tasks/:id", protect, async (req, res, next) => {
   }
 });
 
+app.patch("/api/tasks/:id/toggle", protect, async (req, res, next) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    if (!task) return res.status(404).json({ message: "Not found" });
+    
+    task.done = !task.done;
+    await task.save();
+    res.json(task);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("Hello from Node.js server!");
 });

@@ -17,3 +17,6 @@ export const createTask = (data) => axios.post(API_URL, data, getAuthConfig());
 
 export const deleteTask = (id) =>
   axios.delete(`${API_URL}/${id}`, getAuthConfig());
+
+export const toggleTask = (id) =>
+  axios.patch(`${API_URL}/${id}/toggle`, {}, getAuthConfig());
