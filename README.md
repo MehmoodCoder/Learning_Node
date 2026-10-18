@@ -67,6 +67,7 @@ npm i helmet dotenv express mongoose cors nodemon
 ```bash
 MONGODB_URI=your_mongodb_connection_string
 PORT=port
+JWT_SECRET=MySecretJWT12345678!@#$%^&*
 ```
 
 ---
